@@ -2,15 +2,30 @@ import { Box, Text, TextField, Image, Button } from '@skynexui/components';
 import React from 'react';
 import appConfig from '../config.json';
 
+export default function ChatPage() {
+    const [mensagem, setMensagem] = React.useState('');
+    const [listaDeMensagens, setListaDeMensagens] = React.useState([]);
 
-export default function Chat() {
-   const [mensagem, setMensagem] = React.useState('');
+    function handleNovaMensagem(novaMensagem) {
+        const mensagem = {
+            id: listaDeMensagens.length + 1,
+            de: 'mylenaverspeelt',
+            texto: novaMensagem,
+        };
+
+        setListaDeMensagens([
+            mensagem,
+            ...listaDeMensagens,
+        ]);
+        setMensagem('');
+    }
+
     return (
         <Box
             styleSheet={{
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 backgroundColor: appConfig.theme.colors.primary[500],
-                backgroundImage: `url(https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max)`,
+                backgroundImage: `url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcHBgkIBw0SCgkFBQoFBQUFDhcICQUKFBEWFhQRExMYHSggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKCwUFDgUFGisZExkrKysrKystLSsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAKgBLAMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAwEH/8QAFhABAQEAAAAAAAAAAAAAAAAAABIR/8QAGgEBAQEBAAMAAAAAAAAAAAAAAAMCBAEFBv/EABYRAQEBAAAAAAAAAAAAAAAAAAAREv/aAAwDAQACEQMRAD8A5phikkvpo9LU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhU8MUkkhVZJVkluJaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaWklWSW4jpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpKSVZJIaSklWSSGkpJVkkhpaSVZJbiNSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFSklWSSFVklaCGkdIyStBAaRklaCA0jJK0EBpGSVoIDSMkrQQGkZJWggNIyStBAaRklaCA0jJK0EBpGSVoIDSMkrQQGkZJWggNIyStBAaRklaCA0jJK0EBpGSVoIDSMkrQQGkZJWggNLSSvJLy59ISSvJIaQkleSQ0hJK8khpCSV5JDSEkrySGkJJXkkNISSvJIaQkleSQ0hJK8khpCSV5JDSEkrySGkJJXkkNISSvJIaQkleSQ0hJK8khpCSV5JDSEkrySGkJJXkkNLSSrJI59JSSrJIaSklWSQ0lJKskhpKSVZJDSUkqySGkpJVkkNJSSrJIaSklWSQ0lJKskhpKSVZJDSUkqySGkpJVkkNJSSrJIaSklWSQ0lJKskhpKSVZJDSUkqySGkpJVkkNLySrJLFZiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUiUkqySUi0krQQnVcoyStBBTKMkrQQUyjJK0EFMoyStBBTKMkrQQUyjJK0EFMoyStBBTKMkrQQUyjJK0EFMoyStBBTKMkrQQUyjJK0EFMoyStBBTKMkrQQUyjJK0EFMoyStBBTKMkrQQUyjJK0EFMrSSvJKVdGUJJXkkplCSV5JKZQkleSSmUJJXkkplCSV5JKZQkleSSmUJJXkkplCSV5JKZQkleSSmUJJXkkplCSV5JKZQkleSSmUJJXkkplCSV5JKZQkleSSmUJJXkkplCSV5JKZQkleSSmVpJYJLRsksAjZJYBGySwCNklgEbJLAI2SWARsksAjZJYBGySwCNklgEbJLAI2SWARsksAjZJYBGySwCNklgEbJLAI2SWAR//Z)`,
                 backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundBlendMode: 'multiply',
                 color: appConfig.theme.colors.neutrals['000']
             }}
@@ -42,9 +57,8 @@ export default function Chat() {
                         padding: '16px',
                     }}
                 >
-
-                    {/* <MessageList mensagens={[]} /> */}
-
+                    <MessageList mensagens={listaDeMensagens} />
+                
                     <Box
                         as="form"
                         styleSheet={{
@@ -52,14 +66,18 @@ export default function Chat() {
                             alignItems: 'center',
                         }}
                     >
-                    console.log(mensagem);
                         <TextField
-                        value={mensagem}
-                        onChange={ (event) =>{
-                            const valor = event.target.value;            
-                            setMensagem(valor);
-                                                        
-                        }}         //onchange pq é pra texto, fica atento aos inputs do uruario
+                            value={mensagem}
+                            onChange={(event) => {
+                                const valor = event.target.value;
+                                setMensagem(valor);
+                            }}
+                            onKeyPress={(event) => {
+                                if (event.key === 'Enter') {
+                                    event.preventDefault();
+                                    handleNovaMensagem(mensagem);
+                                }
+                            }}
                             placeholder="Insira sua mensagem aqui..."
                             type="textarea"
                             styleSheet={{
@@ -99,7 +117,7 @@ function Header() {
 }
 
 function MessageList(props) {
-    console.log('MessageList', props);
+    console.log(props);
     return (
         <Box
             tag="ul"
@@ -112,50 +130,53 @@ function MessageList(props) {
                 marginBottom: '16px',
             }}
         >
-
-            <Text
-                key={mensagem.id}
-                tag="li"
-                styleSheet={{
-                    borderRadius: '5px',
-                    padding: '6px',
-                    marginBottom: '12px',
-                    hover: {
-                        backgroundColor: appConfig.theme.colors.neutrals[700],
-                    }
-                }}
-            >
-                <Box
-                    styleSheet={{
-                        marginBottom: '8px',
-                    }}
-                >
-                    <Image
-                        styleSheet={{
-                            width: '20px',
-                            height: '20px',
-                            borderRadius: '50%',
-                            display: 'inline-block',
-                            marginRight: '8px',
-                        }}
-                        src={`https://github.com/vanessametonini.png`}
-                    />
-                    <Text tag="strong">
-                        {mensagem.de}
-                    </Text>
+            {props.mensagens.map((mensagem) => {
+                return (
                     <Text
+                        key={mensagem.id}
+                        tag="li"
                         styleSheet={{
-                            fontSize: '10px',
-                            marginLeft: '8px',
-                            color: appConfig.theme.colors.neutrals[300],
+                            borderRadius: '5px',
+                            padding: '6px',
+                            marginBottom: '12px',
+                            hover: {
+                                backgroundColor: appConfig.theme.colors.neutrals[700],
+                            }
                         }}
-                        tag="span"
                     >
-                        {(new Date().toLocaleDateString())}
+                        <Box
+                            styleSheet={{
+                                marginBottom: '8px',
+                            }}
+                        >
+                            <Image
+                                styleSheet={{
+                                    width: '20px',
+                                    height: '20px',
+                                    borderRadius: '50%',
+                                    display: 'inline-block',
+                                    marginRight: '8px',
+                                }}
+                                src={`https://github.com/mylenaverspeelt.png`}
+                            />
+                            <Text tag="strong">
+                                {mensagem.de}
+                            </Text>
+                            <Text
+                                styleSheet={{
+                                    fontSize: '10px',
+                                    marginLeft: '8px',
+                                    color: appConfig.theme.colors.neutrals[300],
+                                }}
+                                tag="span"
+                            >
+                                {(new Date().toLocaleDateString())}
+                            </Text>
+                        </Box>
+                        {mensagem.texto}
                     </Text>
-                </Box>
-                {mensagem.texto}
-            </Text>
+                );
+            })}
         </Box>
     )
 }
