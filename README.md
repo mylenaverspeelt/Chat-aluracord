@@ -1,5 +1,9 @@
-<h1>✨ Chat - Aluracord </h1>
-<p>Projeto desenvolvido durante a Imersão React Alura 2022</p>
-<p>Consiste num chat de texto, baseado no Discord.</p>
-<p>Desenvolvido por: Mylena Verspeelt 🌻 </p>
+# ✨ Chat - Aluracord 
+
+<img src="./read-me-img-1.png" />
+<img src="./read-me-img-2.png" />
+
+Projeto desenvolvido na Imersão React da Alura em 2022.
+Feito com nextJS e skynexUI.
+Pra rodar o arquivo basta clonar o repositório e ter o git, node e yarn instalados na sua máquina e dar o comando next dev.
 
