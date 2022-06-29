@@ -1,6 +1,6 @@
 # Chat - Aluracord 
 
-It's a login screen and a text chat, developed with NextJS and skynexUI for at Alura's React Immersion (2022)
+It's a login screen and a text chat, developed with NextJS and skynexUI at Alura's React Immersion (2022)
 
 <img src="./read-me-img-1.png" />
 <img src="./read-me-img-2.png" />
