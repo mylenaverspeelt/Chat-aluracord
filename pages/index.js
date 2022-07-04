@@ -70,7 +70,7 @@ export default function PaginaInicial() {
             </Text>
 
             <TextField
-              value={username}         //DECLARADO NA LINHA 72
+              value={username}         
               onChange={function (event) {
                 setUsername(event.target.value)
               }}
@@ -83,6 +83,8 @@ export default function PaginaInicial() {
                   backgroundColor: appConfig.theme.colors.neutrals[800],
                 },
               }}
+              placeholder ='insira aqui o seu @ do github'
+              color='#fff'
             />
             <Button
               type='submit'
@@ -128,7 +130,7 @@ export default function PaginaInicial() {
                 color: appConfig.theme.colors.neutrals[200],
                 backgroundColor: appConfig.theme.colors.neutrals[900],
                 padding: '3px 10px',
-                borderRadius: '1000px'
+                borderRadius: '1000px',
               }}
             >
               {username}
