@@ -29,7 +29,8 @@ Once the dependencies are installed, you can run the app:
 
 ```sh
 cd Chat-aluracord
-next dev
+yarn install
+yarn dev
 ```
 
 Your browser should open up the running app, or you can access: http://localhost:3000/
